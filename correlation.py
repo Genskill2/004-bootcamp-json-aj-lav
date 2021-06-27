@@ -4,7 +4,7 @@ def load_journal(file_name):
     fh = open(file_name,'r')
     data = json.loads(fh.read())
     return data
-def compute_phi(journal,entries):
+def compute_phi(journal,event):
     n_l_,n_o_,n__l,n__o,n_ll,n_oo,n_lo,n_ol = 0,0,0,0,0,0,0,0
     for entries in journal:
         r1 = event in entries['events']
