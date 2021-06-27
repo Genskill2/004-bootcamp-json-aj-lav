@@ -3,6 +3,7 @@ import json
 def load_journal(file_name):
     fh = open(file_name,'r')
     data = json.loads(fh.read())
+    fh.close()
     return data
 def compute_phi(file_name,event):
     n_l_,n_o_,n__l,n__o,n_ll,n_oo,n_lo,n_ol = 0,0,0,0,0,0,0,0
@@ -29,7 +30,7 @@ def compute_phi(file_name,event):
     num = ((n_ll*n_oo)-(n_lo*n_ol))
     den = (n_l_ * n_o_ * n__l * n__o)**0.5
     val = num/den
-    return event,val
+    return [event,val]
 def compute_correlations(file_name):
     journal = load_journal(file_name)
     events = list()
@@ -50,4 +51,4 @@ def diagnose(file_name):
     l = sorted(dic)
     max_val, min_val = l[-1],l[0]  
     return dic[max_val],dic[min_val]
-
+#print(diagnose('journal.json'))
