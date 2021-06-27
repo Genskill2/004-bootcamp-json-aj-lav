@@ -30,7 +30,7 @@ def compute_phi(file_name,event):
     num = ((n_ll*n_oo)-(n_lo*n_ol))
     den = (n_l_ * n_o_ * n__l * n__o)**0.5
     val = num/den
-    return [event,val]
+    return val
 def compute_correlations(file_name):
     journal = load_journal(file_name)
     events = list()
@@ -39,8 +39,8 @@ def compute_correlations(file_name):
         for event in entries['events']:
             if event not in events:
                 events.append(event)
-                key,val = compute_phi(file_name,event)
-                corr[key] = val
+                val = compute_phi(file_name,event)
+                corr[event] = val
     return corr
 def diagnose(file_name):
     ret = compute_correlations(file_name)
