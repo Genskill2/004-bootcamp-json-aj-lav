@@ -4,9 +4,10 @@ def load_journal(file_name):
     fh = open(file_name,'r')
     data = json.loads(fh.read())
     return data
-def compute_phi(journal,event):
+def compute_phi(file_name,event):
     n_l_,n_o_,n__l,n__o,n_ll,n_oo,n_lo,n_ol = 0,0,0,0,0,0,0,0
-    for entries in journal:
+    data = loads_json(file_name)
+    for entries in data:
         r1 = event in entries['events']
         r2 = entries['squirrel']
         if r1:
@@ -37,7 +38,7 @@ def compute_correlations(file_name):
         for event in entries['events']:
             if event not in events:
                 events.append(event)
-                key,val = compute_phi(journal,event)
+                key,val = compute_phi(file_name,event)
                 corr[key] = val
     return corr
 def diagnose(file_name):
