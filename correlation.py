@@ -25,13 +25,9 @@ def compute_phi(journal,entries):
             n_lo+=1
         else:
             n_ol+=1
-
-    #print(event)
-    #print(str(n_ll),str(n_oo),str(n_lo),str(n_ol),str(n_l_),str(n_o_),str(n__l),str(n__o))
     num = ((n_ll*n_oo)-(n_lo*n_ol))
     den = (n_l_ * n_o_ * n__l * n__o)**0.5
     val = num/den
-    #print('for '+event+str(num)+str(den))
     return event,val
 def compute_correlations(file_name):
     journal = load_journal(file_name)
@@ -53,4 +49,4 @@ def diagnose(file_name):
     l = sorted(dic)
     max_val, min_val = l[-1],l[0]  
     return dic[max_val],dic[min_val]
-print(4diagnose('journal.json'))
+
