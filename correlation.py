@@ -6,7 +6,7 @@ def load_journal(file_name):
     return data
 def compute_phi(file_name,event):
     n_l_,n_o_,n__l,n__o,n_ll,n_oo,n_lo,n_ol = 0,0,0,0,0,0,0,0
-    data = loads_json(file_name)
+    data = load_journal(file_name)
     for entries in data:
         r1 = event in entries['events']
         r2 = entries['squirrel']
